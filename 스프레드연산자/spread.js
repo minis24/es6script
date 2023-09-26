@@ -37,5 +37,5 @@ get(...values);
 
 //호춮하는 함수의 파라미터 값이 분리된 형태를 spread 파라미터라고 함.
 function get(one,two,three,f){
-    console.log(one + two + three+f);
+    console.log(one + two + three);
 }
