@@ -12,6 +12,7 @@ for(var value of [10,20,30]){
 
 //value 변수값을 변경하지 않도록 const 로 선언
 for(const value of [10,20,30]){
+    //value = 11;
     console.log(value)
 }
 
@@ -153,4 +154,22 @@ for (let value of values1){
 30
 
 */
+
+
+
+//for-of 로 Object 열거하기
+// Object 오브젝트는 이터러블 오브젝트가 아니므로 for-of 문으로 열거할 수 없지만,
+// 개발자가 사전처리를 하면, for-of 로 열거 할 수 있다.
+
+
+let sports = {
+    soccer :'축구' ,
+    baseball : '야구'
+};
+
+let keyList = Object.keys(sports);
+console.log('keyList :: ' ,keyList);
+for(let key of keyList){
+    console.log('key :: ' ,key , ' ,value :: ',sports[key]);
+}
 
