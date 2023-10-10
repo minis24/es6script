@@ -61,3 +61,6 @@ console.log(obj2.getTotal(1));
 /* 출력결과
 124
 */
+
+
+
