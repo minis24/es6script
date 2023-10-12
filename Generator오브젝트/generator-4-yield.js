@@ -175,3 +175,20 @@ console.log(genObj3.next(20));
 // 으로 콘솔에 보임.
 { value: [ 20 ], done: true }
 */
+
+
+
+console.log('------------------------------------');
+let genFunc4 = function*(start){
+    let value = start;
+    while (true){
+        yield ++ value;
+    }
+};
+
+for (let count of genFunc4(10)){
+    console.log(count);
+    if(count > 12){
+        break;
+    }
+};
