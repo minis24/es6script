@@ -110,3 +110,34 @@ console.log(genObj4.next(21));
 // ==> 마지막 next(21)을 호출하면, 바로 앞 yield의 p2 변수에 21 을 설정함.
 // ==> 그런데 수행할 yield 가 없으므로, value 프로퍼티는 undefined가 설정된다.
 /* 출력 : { value: undefined, done: true } */
+
+
+
+console.log('-----------------------------------');
+//----------------------------------------------
+// next() 활용
+//----------------------------------------------
+let getAmountFunc = function*(qty,price){
+    let amount = Math.floor(qty* price);
+    let discount = yield amount;
+    return amount - discount;
+};
+
+let getDiscountFunc = function(amount){
+    return amount > 1000 ? amount * 0.2 : amount * 0.1;
+};
+
+let amountObj = getAmountFunc(10,60);
+let result = amountObj.next();
+
+console.log(result);
+
+let dcAmount = getDiscountFunc(result.value);
+console.log(dcAmount);
+console.log(amountObj.next(dcAmount));
+
+/* 출력 : 
+    { value: 600, done: false }
+    60
+    { value: 540, done: true }
+*/

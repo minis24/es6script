@@ -109,3 +109,69 @@ console.log(genObj2.next());
 
 
 
+
+
+console.log('-----------------------------------');
+//----------------------------------------------
+// return 및 다수의 yield 
+//----------------------------------------------
+let genFunc = function*(){
+    return yield yield yield;
+    //yield yield yield;
+}
+
+let genObj1 = genFunc();
+
+console.log(genObj1.next());
+/*출력 : { value: undefined, done: false } */
+// ==> 첫번째 yield 수행 
+// ==>  yield 에 표현식이 없으므로, value 프로퍼티에 undefined 설정.
+
+console.log(genObj1.next(10));
+/*출력 : { value: 10, done: false } */
+// ==> 두번째 yield 수행. 
+// ==> yield 왼쪽에 파라미터를 받을 변수가 없으면, 파라미터로 넘겨준 값을 그대로 반환한다.
+// ==> 그래서 value 프로퍼티에 10이 설정됨.
+
+
+console.log(genObj1.next(20));
+/*출력 : { value: 20, done: false } */
+// ==> 세번째 yield 수행
+// ==> yield 왼쪽에 파라미터를 받을 변수가 없으므로 받은 값을 그대로 리턴.
+
+
+console.log(genObj1.next(30));
+/*출력 : { value: 30, done: true } */
+// ==> 마지막으로 next(30)을 호출하면, 수행할 yield 가 없으므로 {done: true}를 리턴한다.
+// ==> return 을 작성했으므로, 파라미터로 넘겨준 값을 반환한다.
+// ==> 만약 return 을 작성하지 않으면, {value : undefined , done: true}를 반환한다.
+
+
+
+
+console.log('-----------------------------------');
+//----------------------------------------------
+// return 및 배열로 다수의 yield 작성형태
+//----------------------------------------------
+let genFunc3 = function*(){
+    return [yield yield];
+}
+let genObj3 = genFunc3();
+
+console.log(genObj3.next());
+console.log(genObj3.next(10));
+console.log(genObj3.next(20));
+
+/* 출력 
+{ value: undefined, done: false }
+{ value: 10, done: false }
+
+// ==> 두번 yield를 수행하므로, 더이상 수행할 yield 가 없는 상태에서
+// ==> 마지막 next(20)을 호출하면, return [yield yield]에서 yield 를 제외하고,
+// ==> 대괄호[] 안에 파리미터로 넘어온 값을 설정하여 {value : Array[1], done : true} 형태로 리턴
+// 브라우저 콘솔에서는 {value: Array(1), done: true} 로 출력됨.
+// 펼치면, done:true
+//       value :[20]
+// 으로 콘솔에 보임.
+{ value: [ 20 ], done: true }
+*/
