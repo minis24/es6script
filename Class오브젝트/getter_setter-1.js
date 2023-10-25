@@ -34,7 +34,7 @@ class Member2 {
 }
 
 let member2 = new Member2();
-// ==> member1.getName 이 값을 구하는 형태이지만, getName이 getter이므로 메서드로 호출됨.
+// ==> setName이 setter이므로 메서드로 호출됨.
 member2.setName = '이름 1';
 console.log('2 :: ',member2.getName);
 
