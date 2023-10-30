@@ -73,8 +73,12 @@ console.log(obj1.ground);
 
 // (1) 서브클래스에 constructor를 작성하고, 슈퍼클래스에 constructor를 작성하지 않은 경우 에러 발생
 //   ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+
+// (2) 서브클래스와 슈퍼클래스 양쪽에 constructor를 작성하면, 에러발생
+//   ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+
+//  ==> 서브클래스에 constructor를 작성하지 않거나, 
 //  ==> 서브클래스의 constructor에 super()를 작성하면, 슈퍼클래스의 constructor를 호출해야한다.
-// (2) 서브클래스와 슈퍼클래스 양쪽에 constructor를 작성하면, 
 
 class Sports2{
     constructor(member) {
@@ -89,7 +93,7 @@ class Sports2{
 
 class Soccer2 extends Sports2 {
     constructor(member) {
-        //super(member);
+        super(member);
         this.member = 456;
         console.log('2 :: this.member :: ',this.member);
     }
