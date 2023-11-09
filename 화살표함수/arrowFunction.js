@@ -27,7 +27,8 @@ sports1.prototype = {
     get1: function(){
         setTimeout(function (){
             console.log(this === window );
-            console.log(this.plus);}  // ==> 오류나거나 undefined
+            //console.log(this.plus);
+        }  // ==> 오류나거나 undefined
         ,1000);
     }
 };
