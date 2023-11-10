@@ -1,5 +1,5 @@
 "use Strict"
-debugger
+//debugger
 
 
 let sports1 = function(){
