@@ -13,6 +13,9 @@ Array 오브젝트
     # Array.push() 
     # Array.unshift()
     # Array.splice()
+
+    # ==> 아래는 정리해야할 내용.
+    # every(),with(),slice(),includes() 
 */
 
 

@@ -1,11 +1,19 @@
 /* 
 Map 오브젝트
+    # new Map()
+    # set()
+*/
+
+
+
+
+/*
 Map 오브젝트는 Key와 Value로 구성된다.
 Key,value 만 보면 Object 오브젝트와 같지만, Map 오브젝트는 key로 사용할 수 있는 타입이 다양하다.
     ==> Object 오브젝트 : key 타입이 String 또는 Symbol
     ==> Map 오브젝트 : String ,Symbol 외에도 Object,Function 등의 오브젝트를 사용할 수 있다.
-*/
 
+*/
 // Object 오브젝트 ==> {key:value} 형태로 작성, key 값이 같아도 추가됨
 // Map 오브젝트 ==> ["key","value"] 와 같이 이터러블 형태로 작성 , 
 
@@ -137,7 +145,7 @@ try{
 }
 
 let newMap3 = new Map([{one:1}]);  // 오류는 발생하지 않지만, key,value 에 undefined 설정됨.
-let newMap4 = new Map([['one',1]]);  // 오류는 발생하지 않지만, key,value 에 undefined 설정됨.
+let newMap4 = new Map([['one',1]]);  // 
 console.log(newMap3)
 console.log(newMap4)
 /*[출력]
@@ -153,6 +161,128 @@ Map(1) { 'one' => 1 }
 
 
 
+console.log('')
+console.log('')
+console.log('-----------------------------------------------')
 
+
+
+
+//-------------------------------------------------
+// (2) set() : key, value 설정
+//-------------------------------------------------
+// 첫번째 파라미터 : key가 될 String 또는 오브젝트를 작성
+// 두번째 파라미터 : value 를 작성
+//  ==> set()을 실행 후 Map 인스턴스를 반환하므로, 메서드 체인 형태로 계속해서 Map 인스턴스의 메서드를 호출할 수 있다.
+//  ==> key값이 같은 key가 존재하면, 추가하지 않고, value를 바꾼다.
+
+
+const newMap5 = new Map();
+newMap5.set('one',100);
+console.log('newMap5.size :: ',newMap5.size);
+
+/*[출력] newMap5.size ::  1 */
+
+
+newMap5.set({},'오브젝트');
+newMap5.set(function(){},'Function');
+newMap5.set(new Number('123'),'인스턴스');
+newMap5.set(NaN,'Not a Number');
+
+for (let [key,value] of newMap5){
+    console.log(key ,value)
+}
+/*[출력]
+one 100
+{} 오브젝트
+[Function (anonymous)] Function
+[Number: 123] 인스턴스
+NaN Not a Number
+
+*/
+
+console.log('newMap5.size :: ',newMap5.size);
+/*[출력] newMap5.size ::  5 */
+
+
+
+
+
+
+const newMap6 = new Map();
+newMap6.set('one',100);
+newMap6.set('one',123);
+
+let obj1 = {sports:'스포츠'};   
+newMap6.set(obj1,"오비제이1 오브젝트");  // obj1 인스턴스의 주소값이 key로 설정됨.
+newMap6.set(obj1,'오비제이1 오브젝트 변경'); // 동일한 인스턴스의 주소값이 key이므로 값이 대체됨.
+
+newMap6.set({},"Object-1 ");  //{} 새로운 오브젝트의 인스턴스 주소값이 key가 됨
+newMap6.set({},'Object-2 ') //위와 마찬가지로 {} 새로운 오브젝트의 인스턴스 주소값이 key가 되므로 값이 대체 되지 않음.주소값이 다르므로 다른 key로 인식함.
+
+/*
+Map(4) {'one' => 123, {…} => '오비제이1 오브젝트 변경', {…} => 'Object-1 ', {…} => 'Object-2 '}
+0: {"one" => 123}
+1: {Object => "오비제이1 오브젝트 변경"}  
+2: {Object => "Object-1 "}
+3: {Object => "Object-2 "}
+*/
+
+
+
+
+
+
+
+
+
+console.log('')
+console.log('')
+console.log('-----------------------------------------------')
+
+
+//-------------------------------------------------
+// (3) get() : key가 같은 value값 반환
+//-------------------------------------------------
+// Map 인스턴스 에서 key값이 같은 value를 반환함.
+
+
+const newMap7 = new Map();
+newMap7.set('one',100);
+console.log(newMap7.get('one'))
+console.log(newMap7.get('two'))
+/*[출력]
+100
+undefined
+*/
+
+
+let obj2 = {obj2 : '오비제이2'};
+newMap7.set(obj2,'오비제이2 인스턴스');
+console.log(newMap7.get(obj2));
+
+/*[출력] 오비제이2 인스턴스 */
+
+
+
+const newMap8 = new Map();
+newMap8.set({},"오오오브제액트");
+console.log(newMap8.get({}));
+
+/*[출력] undefined */
+
+
+
+newMap8.set(123,'값 123');
+console.log(newMap8.get(123));
+console.log(newMap8.get('123'));
+/*[출력]
+값 123
+undefined
+*/
+
+newMap8.set(NaN,"Not a Number");
+console.log(newMap8.get(NaN));
+/*[출력] Not a Number */
 
 //----> 
