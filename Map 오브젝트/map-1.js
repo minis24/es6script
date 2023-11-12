@@ -4,7 +4,8 @@ Map 오브젝트
     # set()
     # get()
 
-    # has(), entries(), keys(), values(), forEach
+    # has(), entries(), keys(), values(), forEach(), delete(), clear() 
+    # Symbol.iterator
 */
 
 
