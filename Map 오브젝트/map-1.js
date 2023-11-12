@@ -2,6 +2,9 @@
 Map 오브젝트
     # new Map()
     # set()
+    # get()
+
+    # has(), entries(), keys(), values(), forEach
 */
 
 
