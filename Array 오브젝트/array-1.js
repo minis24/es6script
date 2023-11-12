@@ -15,7 +15,7 @@ Array 오브젝트
     # Array.splice()
 
     # ==> 아래는 정리해야할 내용.
-    # every(),with(),slice(),includes() 
+    # map(),every(),with(),slice(),includes() 
 */
 
 
@@ -38,9 +38,9 @@ arr ::  (4) ['a', 'b', 'c', 'd']
 //--------------------------------------------
 // unshift() : 배열의 앞쪽에 요소를 추가
 //--------------------------------------------
-arr1 = ['a', 'b', 'c']
-arr1.unshift('d'); 
-console.log('arr1 :: ' ,arr1)
+let arrForUnshift = ['a', 'b', 'c']
+arrForUnshift.unshift('d'); 
+console.log('arr1 :: ' ,arrForUnshift)
 
 /*[출력]
 arr1 ::  (4) ['d', 'a', 'b', 'c']
@@ -54,26 +54,26 @@ arr1 ::  (4) ['d', 'a', 'b', 'c']
 // [구문] array.splice("위치", "삭제건수", ["요소1", "요소2" ... ])
 
 
-var arr2 = ['a', 'b', 'c', 'e', 'f'];
+var arrForSplice = ['a', 'b', 'c', 'e', 'f'];
 
 // arr = ['a', 'b', 'e', 'f']
-arr2.splice(2, 1); // index 2 부터 1개의 요소('c')를 제거
-console.log('arr2 :: ',arr2)
+arrForSplice.splice(2, 1); // index 2 부터 1개의 요소('c')를 제거
+console.log('arr2 :: ',arrForSplice)
 /*[출력]
 arr2 ::  (4) ['a', 'b', 'e', 'f']
 
 */
 
 // arr = ['a', 'f']
-arr2.splice(1, 2); // index 1 부터 2개의 요소('b', 'e')를 제거
-console.log('arr2 :: ',arr2)
+arrForSplice.splice(1, 2); // index 1 부터 2개의 요소('b', 'e')를 제거
+console.log('arr2 :: ',arrForSplice)
 /*[출력]
 arr2 ::  (2) ['a', 'f']
 */
 
 
-var arr3 = ['a', 'b', 'c', 'e', 'f'];
-removed = arr3.splice(0, 3); // 제거한 요소를 반환 받을 수 있음
+var arrForSplice1 = ['a', 'b', 'c', 'e', 'f'];
+removed = arrForSplice1.splice(0, 3); // 제거한 요소를 반환 받을 수 있음
 console.log('removed :: ',removed)
 
 /*[출력]
@@ -82,16 +82,16 @@ removed ::  (3) ['a', 'b', 'c']
 
 
 
-var arr4 = ['a', 'b', 'c'];
-arr4.splice(2, 0, 'd'); // index 2 ('c')의 위치에 요소를 추가
-console.log('arr4 :: ' ,arr4)
+var arrForSplice2 = ['a', 'b', 'c'];
+arrForSplice2.splice(2, 0, 'd'); // index 2 ('c')의 위치에 요소를 추가
+console.log('arr4 :: ' ,arrForSplice2)
 
 /*[출력]
 arr4 ::  (4) ['a', 'b', 'd', 'c']
 */
 
-arr4.splice(4, 0, ['e', 'f']); // index 4의 위치에 2개의 요소를 추가
-console.log('arr4 :: ' ,arr4)
+arrForSplice2.splice(4, 0, ['e', 'f']); // index 4의 위치에 2개의 요소를 추가
+console.log('arr4 :: ' ,arrForSplice2)
 /*[출력]
 arr4 ::  (5) ['a', 'b', 'd', 'c', Array(2)]
 */
@@ -143,6 +143,49 @@ console.log(arr7)
 /*[출력]
 (7) [1, 비어 있음, 3, 4, 5, 6, 7]
 */
+
+
+
+
+
+
+
+
+//--------------------------------------------
+// map() : 메소드는 콜백 함수를 이용해 각각의 요소에 호출해서 그 값을 변환할 수 있게 해줍니다
+//--------------------------------------------
+// 어떤 배열에 있는 모든 요소들의 값을 변경해서 만든 새로운 배열을 써야 할 때가 있습니다.
+// 그 때 루프를 사용하여 배열에 대해 수동으로 반복 처리하는 대신, 간단히 기본 제공 Array.map() 메소드를 사용하면 됩니다.
+// Array.map() 메소드는 콜백 함수를 이용해 각각의 요소에 호출해서 그 값을 변환할 수 있게 해줍니다. 
+// 다시 말하자면 콜백 함수는 배열의 각 요소에 실행됩니다.
+
+
+//[구문]
+// arr.map(function(element, index, array){  }, this);
+//  첫번째 파라미터 :  콜백함수 function()은 각 배열 요소에 대해 호출됨. 
+//     ==> 콜백함수의 첫번째 파라미터 : 현재의 element
+//     ==> 콜백함수의 두번째 파라미터 : 그것의 index
+//     ==> 콜백함수의 세번째 파라미터 : 전체 array 객체
+//  두번째 파라미터 : [옵션] 첫번째 파라미터인 콜백함수에서 this 로 참조할 오브젝트를 지정
+
+let arrForMap = [2, 3, 5, 7]
+
+arrForMap.map(function(element, index, array){
+    console.log(element);
+    console.log(index);
+    console.log(array);
+    return element;
+}, 80);
+//this인수는 콜백함수 내부에서 사용되게 됩니다. 
+// 기본적으로 이 값은 undefined입니다. 
+// 예를 들어, this값을 숫자 80으로 변경하는 방법은 위와 같습니다:
+
+
+
+
+
+
+
 
 
 
