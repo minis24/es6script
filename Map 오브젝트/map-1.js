@@ -81,7 +81,7 @@ console.log('')
 console.log('')
 console.log('-----------------------------------------------')
 
-
+console.log('GLOBAL :: ',global);
 
 
 let newMap2 = new Map([
